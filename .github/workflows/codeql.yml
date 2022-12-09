@@ -85,6 +85,7 @@ jobs:
         cd ../Common/Lib/Ext
         rm -Rf cxxopts
         git clone https://github.com/jarro2783/cxxopts.git
+        cd cxxopts
         git fetch --all --tags
         git checkout tags/v2.2.1 -b 2.2.1
     
