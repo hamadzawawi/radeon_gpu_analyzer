@@ -12,5 +12,5 @@ jobs:
          vulkan-components: Vulkan-Headers, Vulkan-Loader
          vulkan-use-cache: true      
       
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+     # - name: Setup upterm session
+      #  uses: lhotari/action-upterm@v1
