@@ -37,6 +37,7 @@ jobs:
       
     - name: Install dependencies
       run: |
+        echo "Installing dependencies"
         sudo apt-get update -y
         sudo apt-get install libboost-all-dev -y
         sudo apt-get install libglu1-mesa-dev mesa-common-dev libgtk2.0-dev -y
