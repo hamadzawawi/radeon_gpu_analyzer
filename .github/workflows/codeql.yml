@@ -67,6 +67,9 @@ jobs:
     
     - name: Install Qt
       uses: jurplel/install-qt-action@v3.0.0
+      with:
+        dir: /home/runner/work
+        version: 5.15.2
     
     - name: Prepare Vulkan SDK
       uses: humbletim/setup-vulkan-sdk@v1.2.0
@@ -77,7 +80,7 @@ jobs:
 
       
     - name: Run Prebuild.sh
-      run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib 
+      run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib --qt /home/runner/work/Qt/5.15.2/gcc_64
       shell: bash
       
     - name: Replace cxx lib with v2.1
