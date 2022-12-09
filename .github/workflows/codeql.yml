@@ -71,7 +71,7 @@ jobs:
       working-directory: ./build
       run: |
         pwd
-        prebuild.sh
+        ls
       shell: bash
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
