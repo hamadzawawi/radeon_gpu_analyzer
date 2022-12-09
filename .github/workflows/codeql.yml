@@ -67,11 +67,12 @@ jobs:
         queries: security-extended
       
             
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      
     - name: Run Prebuild.sh
-      working-directory: ./build
-      run: |
-        pwd
-        ls
+      working-directory: ${{ github.workspace }}/build
+      run: prebuild.sh
       shell: bash
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
