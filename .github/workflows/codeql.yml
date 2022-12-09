@@ -89,23 +89,17 @@ jobs:
         git fetch --all --tags
         git checkout tags/v2.2.1 -b 2.2.1
     
-    - name: Run make
-      run: |
-        cd ${{ github.workspace }}/build/linux/make
-        make
-
-  ####
    # - name: Setup upterm session
    #   uses: lhotari/action-upterm@v1
    
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-   # - name: Autobuild
-    #  uses: github/codeql-action/autobuild@v2
-     # with:
-      #  working-directory: ${{ github.workspace }}/build/linux/make
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+      with:
+        working-directory: ${{ github.workspace }}/build/linux/make
 
-   # - name: Perform CodeQL Analysis
-    #  uses: github/codeql-action/analyze@v2
-     # with:
-      #  category: "/language:${{matrix.language}}"
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}"
