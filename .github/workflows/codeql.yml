@@ -39,7 +39,6 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install libboost-all-dev -y
-        sudo apt-get install gcc-multilib g++-multilib -y
         sudo apt-get install libglu1-mesa-dev mesa-common-dev libgtk2.0-dev -y
         sudo apt-get install zlib1g-dev libx11-dev -y
 
@@ -49,6 +48,12 @@ jobs:
     
     - name: Checkout Repo
       uses: actions/checkout@v3
+      
+    - name: Set up GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: 10
+        platform: x64
       
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
