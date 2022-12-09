@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: 18.04.6-LTS
     permissions:
       actions: read
       contents: read
@@ -81,7 +81,6 @@ jobs:
     
     - name: Run make
       run: |
-        export CXXFLAGS="-g -pipe -march=native -mtune=native -Ofast -pipe -ftree-vectorize -fstack-protector-strong -include /usr/include/c++/11*/limits"
         cd ${{ github.workspace }}/build/linux/make
         make
 
