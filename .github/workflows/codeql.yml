@@ -54,7 +54,8 @@ jobs:
         sudo apt-get install zlib1g-dev libx11-dev -y
       
     - name: Run Prebuild.sh
-      run: ./build/prebuild.sh
+      working-directory: ./build
+      run: prebuild.sh
       shell: bash
       
     # Initializes the CodeQL tools for scanning.
