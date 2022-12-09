@@ -62,8 +62,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Run Prebuild.sh
-      working-directory: ./build
-      run: prebuild.sh
+      run: ${{ github.workspace }}/build/prebuild.sh
       shell: bash
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
@@ -71,7 +70,7 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
       with:
-        working-directory: ./build/linux
+        working-directory: ${{ github.workspace }}/build/linux
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
