@@ -54,7 +54,7 @@ jobs:
         sudo apt-get install zlib1g-dev libx11-dev -y
       
     - name: Run Prebuild.sh
-      working-directory: ./build
+      working-directory: build
       run: prebuild.sh
       shell: bash
       
