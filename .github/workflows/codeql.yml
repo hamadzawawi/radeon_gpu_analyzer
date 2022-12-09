@@ -40,8 +40,8 @@ jobs:
     - name: Install Vulkan SDK
       uses: humbletim/install-vulkan-sdk@v1.1.1
     
-    - name: install-cmake
-      uses: Symbitic/install-cmake@v0.1.0
+    - name: Install Cmake latest version
+      uses: lukka/get-cmake@latest  
     
     - name: Install Qt
       uses: jurplel/install-qt-action@v3.0.0
