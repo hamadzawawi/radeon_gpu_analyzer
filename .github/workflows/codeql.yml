@@ -34,12 +34,6 @@ jobs:
         language: [ 'cpp' ]
 
     steps:
-    
-    - name: Install Cmake latest version
-      uses: lukka/get-cmake@latest  
-    
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3.0.0
       
     - name: Install dependencies
       run: |
@@ -59,6 +53,12 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
     
+    - name: Install Cmake latest version
+      uses: lukka/get-cmake@latest  
+    
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3.0.0
+    
     - name: Prepare Vulkan SDK
       uses: humbletim/setup-vulkan-sdk@v1.2.0
       with:
@@ -71,8 +71,8 @@ jobs:
       run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib 
       shell: bash
       
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
+   # - name: Setup upterm session
+   #   uses: lhotari/action-upterm@v1
    
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
