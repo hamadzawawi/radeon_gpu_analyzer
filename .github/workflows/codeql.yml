@@ -65,14 +65,15 @@ jobs:
         vulkan-query-version: 1.3.204.0
         vulkan-components: Vulkan-Headers, Vulkan-Loader
         vulkan-use-cache: true
-      
-  #  - name: Setup upterm session
-   #   uses: lhotari/action-upterm@v1
+
       
     - name: Run Prebuild.sh
       run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib 
       shell: bash
-
+      
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+   
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
