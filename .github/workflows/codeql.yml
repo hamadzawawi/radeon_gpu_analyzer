@@ -65,6 +65,9 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
       
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+      
     - name: Run Prebuild.sh
       run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib 
       shell: bash
