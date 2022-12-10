@@ -81,7 +81,7 @@ jobs:
 
       
     - name: Run Prebuild.sh
-      run: ${{ github.workspace }}/build/prebuild.sh --vk-include /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/include --vk-lib /home/runner/work/radeon_gpu_analyzer/radeon_gpu_analyzer/VULKAN_SDK/lib --qt /home/runner/work/Qt/5.15.2/gcc_64
+      run: ${{ github.workspace }}/build/prebuild.sh --cli-only --no-vulkan --qt /home/runner/work/Qt/5.15.2/gcc_64
       shell: bash
       
     - name: Replace cxx lib with v2.1
