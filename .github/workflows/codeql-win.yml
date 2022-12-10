@@ -54,7 +54,7 @@ jobs:
         vulkan-use-cache: true
 
       
-    - name: Run Prebuild.sh
+    - name: Run Prebuild
       run: ${{ github.workspace }}/build/prebuild.bat --vs 2022 --vk-include ${{ github.workspace }}/VULKAN_SDK/include --vk-lib ${{ github.workspace }}/VULKAN_SDK/lib 
       
     
@@ -66,7 +66,7 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
       with:
-        working-directory: ${{ github.workspace }}/build/win
+        working-directory: ${{ github.workspace }}/windows/vs2022
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
