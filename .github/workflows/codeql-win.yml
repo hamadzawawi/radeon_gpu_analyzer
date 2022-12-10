@@ -1,0 +1,74 @@
+
+name: "CodeQL-Windows"
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
+  schedule:
+    - cron: '34 7 * * 2'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: windows-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'cpp' ]
+
+    steps:
+      
+    # Initializes the CodeQL tools for scanning.
+
+    
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    
+      
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-extended
+    
+    - name: Install Cmake latest version
+      uses: lukka/get-cmake@latest  
+    
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3.0.0
+      with:
+        version: 5.15.2
+    
+    - name: Prepare Vulkan SDK
+      uses: humbletim/setup-vulkan-sdk@v1.2.0
+      with:
+        vulkan-query-version: 1.3.204.0
+        vulkan-components: Vulkan-Headers, Vulkan-Loader
+        vulkan-use-cache: true
+
+      
+    - name: Run Prebuild.sh
+      run: ${{ github.workspace }}/build/prebuild.bat --vs 2022 --vk-include ${{ github.workspace }}/VULKAN_SDK/include --vk-lib ${{ github.workspace }}/VULKAN_SDK/lib 
+      
+    
+   # - name: Setup upterm session
+   #   uses: lhotari/action-upterm@v1
+   
+    # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
+    # If this step fails, then you should remove it and run the build manually (see below)
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+      with:
+        working-directory: ${{ github.workspace }}/build/win
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}"
